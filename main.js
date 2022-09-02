@@ -1,7 +1,27 @@
-const inputElement = document.querySelector("input")
-const buttonElement = document.querySelector("form button")
+const inputElement = document.querySelector("input");
+const buttonElement = document.querySelector("form button");
+const ulElement = document.querySelector("ul");
 
-buttonElement.onclick = ev =>{
+buttonElement.onclick = (ev) => {
   ev.preventDefault();
-  console.log(inputElement.value)
-}
+
+  if (inputElement.value) {
+    const textElement = document.createElement("span");
+    textElement.innerHTML = inputElement.value;
+
+    const btnElement = document.createElement("button");
+    btnElement.innerHTML = "Remover";
+
+    const liElement = document.createElement("li");
+    liElement.appendChild(textElement);
+    console.log(textElement);
+    liElement.appendChild(btnElement);
+
+    btnElement.onclick =()=>{
+      ulElement.removeChild(liElement)
+    }
+    
+    ulElement.appendChild(liElement)
+    inputElement.value = "";
+  }
+};
